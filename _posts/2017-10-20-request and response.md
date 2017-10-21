@@ -1,13 +1,16 @@
-﻿### 请求对象request和响应对象response
-
----
+﻿---
 layout: post
 title: request&response
 description: "请求对象request和响应对象response"
 tag: JavaEE
 ---
 
+
+### 请求对象request和响应对象response
+
+
 ### 内容概要
+
 
 >  - 请求和响应的路径问题
  - 请求对象HttpServletRequest概述
@@ -21,6 +24,8 @@ tag: JavaEE
 
 ### 路径访问Servlet
 
+
+
 > - 相对路径访问Servlet
  - 当前目录用./表示
  - 上一级目录用../表示
@@ -31,12 +36,20 @@ tag: JavaEE
         - “/”代表前面的ip和端口
         - “/”在客户端浏览器是代表协议、ip和端口（可以体现在html等的编写上，从浏览器上可获取的资源）
         - “/”在服务器中（服务端页面跳转）代表的是协议、ip、端口和项目名
-        
+
+
+
 ### 请求对象HttpServletRequest概述
+
+
 >  - Web服务器收到客户的Http请求，会针对每一次请求，分别创建一个代表请求的Request对象和代表响应的Response对象。
 >  - 想获取客户提交过来的数据，需要Request，想要返回给客户，需要response
 
+
+
 ### HttpServletRequest头信息的获取
+
+
 
 >- HttpServletRequest在JavaWeb中是非常重要的一个类，它是Servlet的Service()的方法参数之一
 > - request的功能可以分为以下几种
@@ -55,6 +68,8 @@ tag: JavaEE
     - String getHeader(String name),返回指定的作为字符串请求消息头的值
     - Enumeration getHeaderNames(),返回所有的本请求消息包含的头名字的集合。 
     - int getIntHeader(String name),返回一个指定的请求消息头的整数值。
+
+
     package com.rl.servlet;
 
     import java.io.IOException;
@@ -108,8 +123,10 @@ tag: JavaEE
     - request.getScheme()：http
     - request.getServletName：localhost
     - request.getServerPort：8080
+
     
 ### HttpServletRequest参数接受
+
 
 >  - HttpServletReauest获取客户端的参数请求，一般有以下几种
     - String getParameter(String name)，返回一个请求参数的字符串值。若该参数不存在，则返回一个空值。
@@ -125,8 +142,11 @@ tag: JavaEE
     - Post
         -  表单中给出的参数 <form method="POST" action="Paramservlet">...</form>
         - Ajax暂不介绍
-    
+
+
 ### 请求参数接受的中文乱码问题
+
+
 >  - Request接收参数时，有get和post两种方式，但处理中文的编码却不一样，做项目时一般用UTF-8，可以设置全局工作模式，Windows下workspace选择UTF-8
  - 当使用Post方式时，请求消息中，Post编码有问题，正文使用ISO-8859-1，页面使用UTF-8编码，所以会有问题
  
@@ -158,7 +178,10 @@ tag: JavaEE
 
 > - 第三种设置Get方法的中文乱码的方法是，javascripts对超链接做url编码，即对Get请求中的参数使用javascripts做url编码，编码后的参数不再是中文，这样IE6也不会丢失字节了。
 
+
 ### Request请求转发和域（服务器端跳转）
+
+
 
     public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -173,7 +196,11 @@ tag: JavaEE
 > - 可以设置参数获取参数request.setAttribute(String name,Object o)、request.getAttribute(String name)返回值Object
 - request和response在一个生命周期内，参数等都在这个请求范围内生存。
 
+
+
 ### HttpServletResponse详解
+
+
 
 >- 设置发送状态码 void setStatus(int sc)，void setSatus(int sc,String sm)，例如：setSatus(404,"页面找不到")
  - 设置响应头信息 void addHeader(String name,String value)，例如，response.   [addHeader("reFresh","5:urlxxx")，3s之后跳转到url，页面跳转不属于服务器跳转
