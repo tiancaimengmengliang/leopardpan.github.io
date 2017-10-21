@@ -167,7 +167,12 @@ tag: JavaEE
     String name = request.getParameter("name");
     name = new String(name.getBytes("ISO-8859-1"),"UTF-8");
     System.out.println(name);
+    
+ ----------
 > 因为在获取参数时已经被错误的编码了，本来使用的是UTF-8编码，但是请求正文还是用ISO-8859-1编码。可以先获取ISO-8859-1的字节数，在转换为UTF-8编码
+
+----------
+
 
 > - 还可以使用request的setCharacterEncoding()来设置编码，指定正文的编码方式
 
@@ -176,6 +181,8 @@ tag: JavaEE
     request.setCharacterEncoding("UTF-8");
     String name = request.getParameter("name");
     
+----------
+
 
 > - 当使用Get方式处理中文乱码时，处理乱码的方法一
 
@@ -185,16 +192,23 @@ tag: JavaEE
     name = new String(name.getBytes("ISO-8859-1"),"UTF-8");
     System.out.println(name);
 
+----------
+
+
 > - 当使用Get方法请求时，正文内容不在请求正文中，而是在url中，所以不能设置request的setCharacterEncoding()来设置Get参数的编码。
     处理Get参数编码可以有两种编辑方式：第一种是设置<Connector>元素的URLEncoding属性值为UTf-8。即con\server.xml中的<Connector>元素的URLEncoding属性：
     
-    ----------
+----------
     
         <Connector port='8080' protocol="HTTP/1.1"
         connectionTimeout="20000"
         redirectPort="8443" URIEncoding="UTF-8"
         />
+----------
+
 > 一旦设置了这个属性，那么对于GET参数就直接是UTF-8编码的了，Connector元素修改的是Tomcat的全局属性。
+
+----------
 
 > - 第三种设置Get方法的中文乱码的方法是，javascripts对超链接做url编码，即对Get请求中的参数使用javascripts做url编码，编码后的参数不再是中文，这样IE6也不会丢失字节了。
 
