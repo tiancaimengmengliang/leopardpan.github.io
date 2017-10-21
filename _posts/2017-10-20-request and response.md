@@ -9,6 +9,8 @@ tag: JavaEE
 
 ### 请求对象request和响应对象response
 
+----------
+
 
 ### 内容概要
 
@@ -21,7 +23,7 @@ tag: JavaEE
  - Request请求转发和域
  - HttpServletResponse
 
- 
+----------
 
 ### 路径访问Servlet
 
@@ -39,6 +41,8 @@ tag: JavaEE
         - “/”在服务器中（服务端页面跳转）代表的是协议、ip、端口和项目名
 
 
+----------
+
 
 ### 请求对象HttpServletRequest概述
 
@@ -47,6 +51,7 @@ tag: JavaEE
 >  - 想获取客户提交过来的数据，需要Request，想要返回给客户，需要response
 
 
+----------
 
 ### HttpServletRequest头信息的获取
 
@@ -69,6 +74,8 @@ tag: JavaEE
     - String getHeader(String name),返回指定的作为字符串请求消息头的值
     - Enumeration getHeaderNames(),返回所有的本请求消息包含的头名字的集合。 
     - int getIntHeader(String name),返回一个指定的请求消息头的整数值。
+
+----------
 
 
     package com.rl.servlet;
@@ -125,6 +132,7 @@ tag: JavaEE
     - request.getServletName：localhost
     - request.getServerPort：8080
 
+----------
     
 ### HttpServletRequest参数接受
 
@@ -145,11 +153,16 @@ tag: JavaEE
         - Ajax暂不介绍
 
 
+----------
+
 ### 请求参数接受的中文乱码问题
 
 
 >  - Request接收参数时，有get和post两种方式，但处理中文的编码却不一样，做项目时一般用UTF-8，可以设置全局工作模式，Windows下workspace选择UTF-8
  - 当使用Post方式时，请求消息中，Post编码有问题，正文使用ISO-8859-1，页面使用UTF-8编码，所以会有问题
+ 
+ 
+----------
  
     String name = request.getParameter("name");
     name = new String(name.getBytes("ISO-8859-1"),"UTF-8");
@@ -158,11 +171,15 @@ tag: JavaEE
 
 > - 还可以使用request的setCharacterEncoding()来设置编码，指定正文的编码方式
 
+----------
+
     request.setCharacterEncoding("UTF-8");
     String name = request.getParameter("name");
     
 
-> - 当使用Get方式处理中文乱码时，处理乱码的方法
+> - 当使用Get方式处理中文乱码时，处理乱码的方法一
+
+----------
 
     String name = request.getParameter("name");
     name = new String(name.getBytes("ISO-8859-1"),"UTF-8");
@@ -170,6 +187,8 @@ tag: JavaEE
 
 > - 当使用Get方法请求时，正文内容不在请求正文中，而是在url中，所以不能设置request的setCharacterEncoding()来设置Get参数的编码。
     处理Get参数编码可以有两种编辑方式：第一种是设置<Connector>元素的URLEncoding属性值为UTf-8。即con\server.xml中的<Connector>元素的URLEncoding属性：
+    
+    ----------
     
         <Connector port='8080' protocol="HTTP/1.1"
         connectionTimeout="20000"
@@ -179,6 +198,7 @@ tag: JavaEE
 
 > - 第三种设置Get方法的中文乱码的方法是，javascripts对超链接做url编码，即对Get请求中的参数使用javascripts做url编码，编码后的参数不再是中文，这样IE6也不会丢失字节了。
 
+----------
 
 ### Request请求转发和域（服务器端跳转）
 
@@ -198,6 +218,7 @@ tag: JavaEE
 - request和response在一个生命周期内，参数等都在这个请求范围内生存。
 
 
+----------
 
 ### HttpServletResponse详解
 
