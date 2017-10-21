@@ -1,6 +1,7 @@
-﻿---
+---
 layout: post
-title: "request\&response"
+title: "request and response"
+date: 2017-10-20
 description: "请求对象request和响应对象response"
 tag: JavaEE
 ---
