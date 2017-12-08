@@ -1,4 +1,4 @@
-﻿---
+---
 layout: post
 title: "泛型与模板"
 data: 2017-12-7
