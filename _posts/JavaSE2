@@ -1,0 +1,23 @@
+---
+layout: post
+title: "JDK目录介绍"
+data: 2017-12-24
+description: "JDK目录介绍"
+tag: JavaSE
+---
+
+### JDK目录的介绍 ###
+JDK安装目录各个子目录的介绍：
+![JDK目录][1]
+ - bin：该目录存放可执行的程序。如javac.exe(java编译器)、java.exe(java运行工具)、jar.exe(java打包工具)、javadoc.exe(文档生成工具)。![bin目录子目录][2]
+    - javac.exe：java编译工具，将java文件编译成java的字节码文件(可执行的java程序)。例如：HelloWorld.java -> HelloWorld.class 。
+    - java.exe：java运行工具，用以启动一个java虚拟机（JVM）进程，java虚拟机相当于一个操作系统，负责运行java编译器生成的字节码文件（.class）。
+ - db：小型开源数据库。纯java实现，支持JDBC4.0所有的规范。
+ - jre：Java Runtime Environment的缩写，是java运行时环境的根目录，它包含java虚拟机、运行时的类包、java应用启动器以及一个bin目录，但不包含开发环境中的开发工具。
+ - include：由于JDK是由C和C++实现的，所以不要引入一些C和C++的头文件，这里存放这些文件。
+ - lib：是library的缩写，存放java的类库或者库文件，是开发工具使用的归档包文件。
+ - src.zip：JDK核心类的源码包。
+
+
+  [1]: /images/posts/JavaSE2/result2.png
+  [2]: /images/posts/JavaSE2/result1.png
