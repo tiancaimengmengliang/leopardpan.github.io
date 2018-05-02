@@ -1,0 +1,37 @@
+---
+layout: post
+title: C语言的由来
+date: 2018-05-02
+description: C
+tags: C语言基础
+---
+
+
+## C语言的由来
+
+### 从机器语言到高级语言
+==低级语言之汇编语言==
+
+``` javascript
+load 0 a                  数据装入寄存器0
+load 1 b                  数据装入寄存器1
+mult 0 1                  寄存器0与1的数据相乘
+load 1 c                  数据装入寄存器1
+add  0 1                  寄存器0与1的数据加
+save 0 d                  保存寄存器0的数据
+```
+==高级语言之C语言==
+
+``` javascript
+//同样的程序
+d = a * b + c;
+```
+
+### 历史
+
+ - 1954-1956年IBM的John Backs和他的研究小组研发了FORTRAN(FORmula TRANslation)
+ - 1960年1月，ALgol 60诞生，A语言
+ - 1963年，剑桥大学在ALGOL 60基础上推出了CPL语言；1967年做了简化，推出了BEPL语言
+ - 1970年，贝尔实验室，ken Thompson，语言，写出了UNIX系统
+ - 1972年，Dennis Ritvhie在B语言的基础上完善和开发C语言，并重写UNIX
+
